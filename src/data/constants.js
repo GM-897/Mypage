@@ -8,8 +8,8 @@ export const Bio = {
     name: "G MAN MOHIT MAHADEV",
     roles: [
       "MERN Developer",
-      "Android Developer",
-      "UI/UX Designer",
+      "Database Management",
+      "Data Structures & Algorithm",
       "Programmer",
     ],
     description:
@@ -18,9 +18,9 @@ export const Bio = {
     resume:
       "https://drive.google.com/file/d/1QPLOn-cUpT7l66lh4qpw11GXyBqxyQ_O/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/gman897/",
-    twitter: "https://twitter.com/RishavChanda",
+    twitter: "https://twitter.com",
     insta: "https://www.instagram.com/the_beast_gm/",
-    facebook: "https://www.facebook.com/rishav.chanda.165/",
+    facebook: "https://www.facebook.com/manmohit.grandhi/",
   };
   
   export const skills = [
