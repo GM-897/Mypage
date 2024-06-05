@@ -9,7 +9,7 @@ export const Bio = {
     roles: [
       "MERN Developer",
       "Database Management",
-      "Data Structures & Algorithm",
+      "Data Structures & Algos",
       "Programmer",
     ],
     description:
