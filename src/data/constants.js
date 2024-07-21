@@ -2,8 +2,8 @@ import space from './space-con.png';
 import gm from '../images/HeroImage.jpg'
 import paras from '../images/paras.png'
 import netflix from '../images/Netflix.png'
-import nudge from '../images/Nudge .png'
-import note from '../images/myNote .png'
+import nudge from '../images/Nudge.png'
+import note from '../images/myNote.png'
 
 export const Bio = {
     name: "G MAN MOHIT MAHADEV",
