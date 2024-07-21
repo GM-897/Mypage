@@ -3,6 +3,7 @@ import gm from '../images/HeroImage.jpg'
 import paras from '../images/paras.png'
 import netflix from '../images/Netflix.png'
 import nudge from '../images/Nudge .png'
+import note from '../images/myNote .png'
 
 export const Bio = {
     name: "G MAN MOHIT MAHADEV",
@@ -346,19 +347,19 @@ export const Bio = {
       ],
     },
    
-    // {
-    //   id: 3,
-    //   title: "Buckoid",
-    //   date: "Dec 2021 - Apr 2022",
-    //   description:
-    //     "App Is Currently In Playstore 100+ Downloads. This Project proposes an “Expense Tracking App”. Keep track of your personal expenses and compare them to your monthly income with the budget planner. It has Google Drive Cloud API for Backup of User Room Database. Made with Kotlin in MVVM Architecture & Live Data.",
-    //   image:
-    //     "https://camo.githubusercontent.com/fbf405040ae86b5d4a40f24e4ac034982cb8c0e2d850560ba64527997b258be8/68747470733a2f2f666972656261736573746f726167652e676f6f676c65617069732e636f6d2f76302f622f6c6f67696e2d65613565322e61707073706f742e636f6d2f6f2f4255434b4f49442532302831292e706e673f616c743d6d6564696126746f6b656e3d32653735376235372d323964372d346263612d613562322d653164346538313432373435",
-    //   tags: ["Kotlin", "MVVM", "Room Database", "Google Drive Cloud API"],
-    //   category: "android app",
-    //   github: "https://github.com/rishavchanda/Buckoid-Android-App",
+    {
+      id: 4,
+      title: "myNotebOOk",
+      date: "Jan 2024 ",
+      description:
+        "Designed and developed a comprehensive notes application to help users efficiently track and manage important information. Utilized the MERN stack, incorporating MongoDB for database management, Express.js for server-side logic, React.js for a dynamic front-end, and Node.js for backend development.",
+      image:
+        note,
+      tags: ["Kotlin", "MVVM", "Room Database", "Google Drive Cloud API"],
+      category: "android app",
+      github: "https://github.com/GM-897/myNotebOOk",
     //   webapp: "https://play.google.com/store/apps/details?id=com.rishav.buckoid",
-    // },
+    },
     // {
     //   id: 10,
     //   title: "Job Finding App",
