@@ -355,8 +355,8 @@ export const Bio = {
         "Designed and developed a comprehensive notes application to help users efficiently track and manage important information. Utilized the MERN stack, incorporating MongoDB for database management, Express.js for server-side logic, React.js for a dynamic front-end, and Node.js for backend development.",
       image:
         note,
-      tags: ["Kotlin", "MVVM", "Room Database", "Google Drive Cloud API"],
-      category: "android app",
+      tags: ["React", "Express", "JWT", "MongoDB"],
+      category: "Web App",
       github: "https://github.com/GM-897/myNotebOOk",
     //   webapp: "https://play.google.com/store/apps/details?id=com.rishav.buckoid",
     },
