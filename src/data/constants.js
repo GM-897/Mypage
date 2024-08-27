@@ -4,6 +4,7 @@ import paras from '../images/paras.png'
 import netflix from '../images/Netflix.png'
 import nudge from '../images/Nudge .png'
 import note from '../images/myNote.png'
+import mine from '../images/Minesweeper.png'
 
 export const Bio = {
     name: "G MAN MOHIT MAHADEV",
@@ -269,6 +270,18 @@ export const Bio = {
   ];
   
   export const projects = [
+       {
+      id: 2,
+      title: "Minesweeper",
+      date: "Jan 2024",
+      description:
+        "Developed a Minesweeper game featuring dynamic grid generation, real-time timer, and custom game logic with win/loss detection.Implemented modular components and responsive design to enhance user experience.",
+      image:mine,
+      tags: ["Next Js", "Redux","Tailwind"],
+      category: "web app",
+      github: "https://github.com/GM-897/minesweeper",
+      webapp: "https://minesweeper-dun-two.vercel.app/",
+    },
     {
       id: 9,
       title: "Space Con",
