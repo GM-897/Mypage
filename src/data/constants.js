@@ -5,6 +5,7 @@ import netflix from '../images/Netflix.png'
 import nudge from '../images/Nudge .png'
 import note from '../images/myNote.png'
 import mine from '../images/Minesweeper.png'
+import brochure from '../images/Real-estate.png'
 
 export const Bio = {
     name: "G MAN MOHIT MAHADEV",
@@ -17,7 +18,7 @@ export const Bio = {
       "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
     github: "https://github.com/gm-897",
     resume:
-      "https://drive.google.com/file/d/1u0_BmnPqnzmVr7k8mTyz7ESdumbjPx5E/view?usp=sharing",
+      "https://drive.google.com/file/d/1qD6BbSMwPk76RWqJPp3Z4h686gFZ3a3p/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/gman897/",
     twitter: "https://twitter.com",
     insta: "https://www.instagram.com/the_beast_gm/",
@@ -156,87 +157,7 @@ export const Bio = {
       ],
       doc: "https://media.licdn.com/dms/image/D4D2DAQFlp60ZqHuaFQ/profile-treasury-image-shrink_1280_1280/0/1691180828512?e=1692381600&v=beta&t=mM5Y_NE5EPlQhez5FAN6NLVSKcO_Ojt_9Gq3mnFGkAQ",
     },
-    {
-      id: 0,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/neurobit.jpeg?alt=media&token=1cacbb7b-e5ea-4efb-9b3d-f5a31b9564ad",
-      role: "Frontend Engineer Intern",
-      company: "Neurobit",
-      date: "June 2023 - Present",
-      desc: "Working on the frontend of the web application using ReactJS, Redux, and Material UI.",
-      skills: [
-        "ReactJS",
-        "Redux",
-        "NodeJs",
-        "Material UI",
-        "HTML",
-        "CSS",
-        "JavaScript",
-      ],
-      doc: "https://firebasestorage.googleapis.com/v0/b/buckoid-917cf.appspot.com/o/Screenshot%20from%202023-05-28%2023-20-46.png?alt=media&token=5570f995-e8f4-4f12-bb2f-73bcf4b20730",
-    },
-    {
-      id: 1,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/flipr.jpeg?alt=media&token=1d72532a-45eb-4c1a-a81a-c9bed9fec543",
-      role: "Fullstack Externship",
-      company: "Flipr",
-      date: "June 2023 - July 2023",
-      desc: "Built an employee management full stack web app used Docker and deployed on AWS ec2. I was the top performer in the program.",
-      skills: [
-        "ReactJS",
-        "Redux",
-        "NodeJs",
-        "Material UI",
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Docker",
-        "AWS",
-        "MongoDB",
-      ],
-    },
-    {
-      id: 2,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/girlScript.jpeg?alt=media&token=e656a621-cf3c-4230-bf0f-e74b4cec6035",
-      role: "Open Source Contributor ",
-      company: "GirlScript Summer of Code",
-      date: "May 2023 - Present",
-      desc: "Contributing to different open-source projects and learn from industry experts",
-      doc: "https://media.licdn.com/dms/image/D4D22AQGzSpgFaR4hsQ/feedshare-shrink_800/0/1684079632872?e=1687996800&v=beta&t=i0xWn_k32Oj9SxKfc6rARSbOghXD9Ge6WyEb2p2vvrc",
-    },
-    {
-      id: 3,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/gdsc.jpeg?alt=media&token=c162329c-efaa-4be8-a173-8d3f4c48ea70",
-      role: "Android Developer",
-      company: "DSC KIIT",
-      date: "Nov2021 - Present",
-      desc: "As an Android developer at the Google Developers Student Club (GDCS), I have had the opportunity to work on exciting projects and collaborate with talented developers who share my passion for technology. Through my involvement with GDCS, I have also had the opportunity to host and participate in numerous events, including hackathons, study jams, and workshops.",
-      skills: [
-        "Leadership",
-        "Mobile Application Development",
-        "Kotlin",
-        "XML",
-        "Figma",
-      ],
-    },
-    {
-      id: 4,
-      img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Rudraksha.jpeg?alt=media&token=8f83f41e-d0a1-486f-9c7f-dd4cd1d09e8d",
-      role: "Android Developer Intern",
-      company: "Rudraksha Welffare Foundation",
-      date: "June 2021 - Oct 2021",
-      desc: "As an Android Developer Intern at Rudraksha Welfare Foundation from June 2021 to October 2021, I gained valuable hands-on experience in application development. During my tenure, I contributed to the development of the application's back-end cloud functions using Firebase and implemented a front-end with the MVVM structure, which was designed using Figma. I also added a one-to-one video call feature, conceptualized new features, and optimized app performance. This internship helped me enhance my skills in Android development and gave me an opportunity to work in a collaborative team environment.",
-      skills: [
-        "Android",
-        "Java",
-        "Kotlin",
-        "XML",
-        "Node Js",
-        "Cloud Firestore",
-        "Firebase",
-        "Figma",
-      ],
-      doc: "https://firebasestorage.googleapis.com/v0/b/buckoid-917cf.appspot.com/o/WhatsApp%20Image%202023-05-05%20at%2012.07.39%20AM.jpeg?alt=media&token=9f0e1648-568b-422d-bd0b-1f125f722245",
-    },
+    
   ];
   
   export const education = [
@@ -281,6 +202,19 @@ export const Bio = {
       category: "web app",
       github: "https://github.com/GM-897/minesweeper",
       webapp: "https://minesweeper-dun-two.vercel.app/",
+    },
+    {
+      id: 10,
+      title: "Real-estate Brochure Generator",
+      date: "Jun 2024",
+      description:
+
+"Developed a system to collect property details and automatically generate real estate brochures.Implemented backend functionalities for creating, inserting, and regenerating brochure content. Integrated OpenAI API to dynamically generate property descriptions based on user inputs, with a fallback to Cohere API for fail-safe generation if OpenAI is unavailable.",
+      image:brochure,
+      tags: ["React","Node js", "Postgres", "Axios","OpenAI API"],
+      category: "web app",
+      github: "https://github.com/GM-897/Realestate",
+      webapp: "https://realestate-page.vercel.app/",
     },
     {
       id: 9,
@@ -371,21 +305,9 @@ export const Bio = {
       tags: ["React", "Express", "JWT", "MongoDB"],
       category: "Web App",
       github: "https://github.com/GM-897/myNotebOOk",
-    //   webapp: "https://play.google.com/store/apps/details?id=com.rishav.buckoid",
+      webapp: "https://i-note-book-frontend-sage.vercel.app/",
     },
-    // {
-    //   id: 10,
-    //   title: "Job Finding App",
-    //   date: "Jun 2023 - Jul 2023",
-    //   description:
-    //     "A Job Finding App made with React Native, Axios. Users can search for any job coming from API and apply there.",
-    //   image:
-    //     "https://user-images.githubusercontent.com/64485885/255237090-cf798a2c-1b41-4bb7-b904-b5353a1f08e8.png",
-    //   tags: ["React Native", "JavaScript", "Axios"],
-    //   category: "android app",
-    //   github: "https://github.com/rishavchanda/Job-finder-App",
-    //   webapp: "https://github.com/rishavchanda/Job-finder-App",
-    // },
+    
 
     // {
     //   id: 5,
