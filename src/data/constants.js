@@ -6,6 +6,7 @@ import nudge from '../images/Nudge .png'
 import note from '../images/myNote.png'
 import mine from '../images/Minesweeper.png'
 import brochure from '../images/Real-estate.png'
+import dashboard from '../images/dashboard.png'
 
 export const Bio = {
     name: "G MAN MOHIT MAHADEV",
@@ -217,6 +218,31 @@ export const Bio = {
       webapp: "https://realestate-page.vercel.app/",
     },
     {
+      id: 11,
+      title: "Admin-Sphere",
+      date: "Nov 2024",
+      description:
+        "Admin Dashboard designed to provide a secure and user-friendly interface for administrators to manage users, roles, and permissions effectively. The system ensures robust role-based access control while maintaining flexibility and ease of use.",
+      image:dashboard,
+      tags: [
+        "Next Js",
+        "MongoDb",
+        "Node Js",
+        "Express Js",
+      ],
+      category: "web app",
+      github: "https://github.com/GM-897/Admin-Sphere",
+      webapp: "https://admin-sphere-prod.vercel.app/login",
+      // member: [
+      //   {
+      //     name: "G Manmohit",
+      //     img: gm,
+      //     linkedin: "https://www.linkedin.com/in/gman897/",
+      //     github: "https://github.com/gm-897",
+      //   },
+      // ],
+    },
+    {
       id: 9,
       title: "Space Con",
       date: "Oct 2023",
@@ -248,18 +274,18 @@ export const Bio = {
         },
       ],
     },
-    {
-      id: 0,
-      title: "Netflix Clone",
-      date: "Apr 2023 - May 2023",
-      description:
-        "Developed a web application that Homepage mimics Netflix interface, displaying a grid of movie and TV show thumbnails.The navigation bar allows users to explore different categories like genres, trending, popular etc. It also include a search bar for users to search for specific content.",
-      image:netflix,
-      tags: ["React Js", "MongoDb", "Node Js", "Express Js", "Redux"],
-      category: "web app",
-      github: "https://github.com/GM-897/Netflix-clone",
-      webapp: "https://netflix-gm.vercel.app/",
-    },
+    // {
+    //   id: 0,
+    //   title: "Netflix Clone",
+    //   date: "Apr 2023 - May 2023",
+    //   description:
+    //     "Developed a web application that Homepage mimics Netflix interface, displaying a grid of movie and TV show thumbnails.The navigation bar allows users to explore different categories like genres, trending, popular etc. It also include a search bar for users to search for specific content.",
+    //   image:netflix,
+    //   tags: ["React Js", "MongoDb", "Node Js", "Express Js", "Redux"],
+    //   category: "web app",
+    //   github: "https://github.com/GM-897/Netflix-clone",
+    //   webapp: "https://netflix-gm.vercel.app/",
+    // },
     {
       id: 1,
       title: "Nudge Sentinel",
