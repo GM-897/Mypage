@@ -20,7 +20,7 @@ export const Bio = {
       "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
     github: "https://github.com/gm-897",
     resume:
-      "https://drive.google.com/drive/u/0/folders/1z5Fu1mQxOa3SXEVg80mHkeBN7y8rDtwl",
+      "https://drive.google.com/file/d/1KiMqFpYNDE5WU9xme0jYt3ppR_waUiPW/view?usp=sharing",
     linkedin: "https://www.linkedin.com/in/gman897/",
     twitter: "https://twitter.com",
     insta: "https://www.instagram.com/the_beast_gm/",
