@@ -1,0 +1,33 @@
+/* src/components/CodingProfiles.css */
+
+.coding-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* Adjust spacing between tiles */
+  }
+  
+  .profile-tile {
+    flex: 1 1 calc(33.333% - 16px); /* Three tiles per row */
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .profile-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Adjust as needed */
+  }
+  
+  .profile-name {
+    margin-top: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+  }

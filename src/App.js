@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import Education from "./components/Education";
 import ProjectDetails from "./components/ProjectDetails";
 import styled from "styled-components";
+import CodingProfiles from "./components/CodingProfiles/index.js";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -39,6 +40,9 @@ function App() {
           <Wrapper>
             <Skills />
             {/* <Experience /> */}
+          </Wrapper>
+          <Wrapper>
+            <CodingProfiles />
           </Wrapper>
           <Projects openModal={openModal} setOpenModal={setOpenModal} />
           <Wrapper>

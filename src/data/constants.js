@@ -7,6 +7,7 @@ import note from '../images/myNote.png'
 import mine from '../images/Minesweeper.png'
 import brochure from '../images/Real-estate.png'
 import dashboard from '../images/dashboard.png'
+import meeting_notes from '../images/meeting-notes.png'
 
 export const Bio = {
     name: "G MAN MOHIT MAHADEV",
@@ -90,10 +91,11 @@ export const Bio = {
           image:
             "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
         },
+        // https://go.dev/blog/go-brand/Go-Logo/PNG/
         {
-          name: "MySQL",
+          name: "goLang",
           image:
-            "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN-nrx3JAILTj9HwgAsRwoImhniLl-05sBCw&s",
         },
       
         {
@@ -122,6 +124,11 @@ export const Bio = {
           name: "VS Code",
           image:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+        },
+        {
+          name: "MySQL",
+          image:
+            "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
         },
         {
           name: "Postman",
@@ -211,11 +218,11 @@ export const Bio = {
       description:
 
 "Developed a system to collect property details and automatically generate real estate brochures.Implemented backend functionalities for creating, inserting, and regenerating brochure content. Integrated OpenAI API to dynamically generate property descriptions based on user inputs, with a fallback to Cohere API for fail-safe generation if OpenAI is unavailable.",
-      image:brochure,
-      tags: ["React","Node js", "Postgres", "Axios","OpenAI API"],
+      image:meeting_notes,
+      tags: ["Next js","Node js","Gemini","Assembly AI","APIs"],
       category: "web app",
       github: "https://github.com/GM-897/Realestate",
-      webapp: "https://realestate-page.vercel.app/",
+      webapp: "https://meeting-notes-main.vercel.app/",
     },
     {
       id: 11,
@@ -233,47 +240,54 @@ export const Bio = {
       category: "web app",
       github: "https://github.com/GM-897/Admin-Sphere",
       webapp: "https://admin-sphere-prod.vercel.app/login",
-      // member: [
-      //   {
-      //     name: "G Manmohit",
-      //     img: gm,
-      //     linkedin: "https://www.linkedin.com/in/gman897/",
-      //     github: "https://github.com/gm-897",
-      //   },
-      // ],
+  
     },
     {
-      id: 9,
-      title: "Space Con",
-      date: "Oct 2023",
+      id: 10,
+      title: "Real-estate Brochure Generator",
+      date: "Jun 2024",
       description:
-        "Aimed at developing an innovative marketplace feature that will fundamentally transform the way users engage in buying and selling a wide variety of assets. Our goal is to create a versatile platform where users can seamlessly transact with an extensive range of items, including technological innovations, hardware raw materials, and cutting-edge software solutions.",
-      image:space,
-      tags: [
-        "React Js",
-        "MongoDb",
-        "Node Js",
-        "Express Js",
-        "Redux",
-      ],
+
+"Developed a system to collect property details and automatically generate real estate brochures.Implemented backend functionalities for creating, inserting, and regenerating brochure content. Integrated OpenAI API to dynamically generate property descriptions based on user inputs, with a fallback to Cohere API for fail-safe generation if OpenAI is unavailable.",
+      image:brochure,
+      tags: ["React","Node js", "Postgres", "Axios","OpenAI API"],
       category: "web app",
-      github: "https://github.com/Paras-Roy/space-con",
-      webapp: "https://space-con.vercel.app/",
-      member: [
-        {
-          name: "G Manmohit",
-          img: gm,
-          linkedin: "https://www.linkedin.com/in/gman897/",
-          github: "https://github.com/gm-897",
-        },
-        {
-          name: "Paras Roy",
-          img: paras,
-          linkedin: "https://www.linkedin.com/in/paras-roy/",
-          github: "https://github.com/Paras-Roy",
-        },
-      ],
+      github: "https://github.com/GM-897/meeting-notes",
+      webapp: "https://realestate-page.vercel.app/",
     },
+    
+    // {
+    //   id: 9,
+    //   title: "Space Con",
+    //   date: "Oct 2023",
+    //   description:
+    //     "Aimed at developing an innovative marketplace feature that will fundamentally transform the way users engage in buying and selling a wide variety of assets. Our goal is to create a versatile platform where users can seamlessly transact with an extensive range of items, including technological innovations, hardware raw materials, and cutting-edge software solutions.",
+    //   image:space,
+    //   tags: [
+    //     "React Js",
+    //     "MongoDb",
+    //     "Node Js",
+    //     "Express Js",
+    //     "Redux",
+    //   ],
+    //   category: "web app",
+    //   github: "https://github.com/Paras-Roy/space-con",
+    //   webapp: "https://space-con.vercel.app/",
+    //   member: [
+    //     {
+    //       name: "G Manmohit",
+    //       img: gm,
+    //       linkedin: "https://www.linkedin.com/in/gman897/",
+    //       github: "https://github.com/gm-897",
+    //     },
+    //     {
+    //       name: "Paras Roy",
+    //       img: paras,
+    //       linkedin: "https://www.linkedin.com/in/paras-roy/",
+    //       github: "https://github.com/Paras-Roy",
+    //     },
+    //   ],
+    // },
     // {
     //   id: 0,
     //   title: "Netflix Clone",
@@ -320,19 +334,19 @@ export const Bio = {
       ],
     },
    
-    {
-      id: 4,
-      title: "myNotebOOk",
-      date: "Jan 2024 ",
-      description:
-        "Designed and developed a comprehensive notes application to help users efficiently track and manage important information. Utilized the MERN stack, incorporating MongoDB for database management, Express.js for server-side logic, React.js for a dynamic front-end, and Node.js for backend development.",
-      image:
-        note,
-      tags: ["React", "Express", "JWT", "MongoDB"],
-      category: "Web App",
-      github: "https://github.com/GM-897/myNotebOOk",
-      webapp: "https://i-note-book-frontend-sage.vercel.app/",
-    },
+    // {
+    //   id: 4,
+    //   title: "myNotebOOk",
+    //   date: "Jan 2024 ",
+    //   description:
+    //     "Designed and developed a comprehensive notes application to help users efficiently track and manage important information. Utilized the MERN stack, incorporating MongoDB for database management, Express.js for server-side logic, React.js for a dynamic front-end, and Node.js for backend development.",
+    //   image:
+    //     note,
+    //   tags: ["React", "Express", "JWT", "MongoDB"],
+    //   category: "Web App",
+    //   github: "https://github.com/GM-897/myNotebOOk",
+    //   webapp: "https://i-note-book-frontend-sage.vercel.app/",
+    // },
     
 
     // {
