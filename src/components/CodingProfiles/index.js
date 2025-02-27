@@ -93,7 +93,7 @@ const CodingProfiles = () => {
     {
       title: "LeetCode",
       image: "https://miro.medium.com/v2/resize:fit:1008/1*VOQU8CuPG34Gsd1yJCadOQ.png",
-      link: "https://leetcode.com/your-profile"
+      link: "https://leetcode.com/u/beastgm10/"
     },
     {
       title: "GitHub",
