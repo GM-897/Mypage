@@ -12,7 +12,10 @@ const app = express();
 let isConnected = false;
 async function connectDB() {
   if (isConnected) return;
-  await mongoose.connect(process.env.MONGO_URI);
+  await mongoose.connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000,
+    connectTimeoutMS: 5000,
+  });
   isConnected = true;
   console.log('MongoDB connected');
 }
@@ -21,19 +24,22 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to DB on every request (cached after first time)
 app.use((req, res, next) => {
-  connectDB().then(next).catch(next);
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl}`);
+  next();
 });
 
+// Health check responds immediately — no DB needed
+app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
+
+// All other routes go through DB connection
 app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
+  connectDB()
+    .then(next)
+    .catch(() => res.status(503).json({ message: 'Database unavailable' }));
 });
 
 app.use('/api', publicRoutes);
 app.use('/api/admin', adminRoutes);
-
-app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 module.exports = app;
