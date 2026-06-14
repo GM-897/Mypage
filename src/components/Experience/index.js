@@ -8,7 +8,8 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import ExperienceCard from '../Cards/ExperienceCard';
-import { experiences } from '../../data/constants';
+import { experiences as fallbackExperiences } from '../../data/constants';
+import { useApi } from '../../hooks/useApi';
 
 const Container = styled.div`
     display: flex;
@@ -74,7 +75,10 @@ const TimelineSection = styled.div`
 
 
 
-const index = () => {
+const Experience = () => {
+    const { data, loading } = useApi('/experiences', fallbackExperiences);
+    const experiences = data || fallbackExperiences;
+
     return (
         <Container id="experience">
             <Wrapper>
@@ -84,8 +88,8 @@ const index = () => {
                 </Desc>
                 <TimelineSection>
                     <Timeline>
-                        {experiences.map((experience,index) => (
-                            <TimelineItem>
+                        {!loading && experiences.map((experience, index) => (
+                            <TimelineItem key={experience._id || index}>
                                 <TimelineSeparator>
                                     <TimelineDot variant="outlined" color="secondary" />
                                     {index !== experiences.length - 1 && <TimelineConnector style={{ background: '#854CE6' }} />}
@@ -103,4 +107,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Experience

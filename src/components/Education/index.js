@@ -7,7 +7,8 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import { education , experiences} from '../../data/constants';
+import { education as fallbackEducation } from '../../data/constants';
+import { useApi } from '../../hooks/useApi';
 import EducationCard from '../Cards/EducationCard';
 
 const Container = styled.div`
@@ -77,7 +78,10 @@ const TimelineSection = styled.div`
 
 
 
-const index = () => {
+const Education = () => {
+    const { data, loading } = useApi('/education', fallbackEducation);
+    const education = data || fallbackEducation;
+
     return (
         <Container id="education">
             <Wrapper>
@@ -87,14 +91,14 @@ const index = () => {
                 </Desc>
                 <TimelineSection>
                     <Timeline>
-                        {education.map((education,index) => (
-                            <TimelineItem >
+                        {!loading && education.map((edu, index) => (
+                            <TimelineItem key={edu._id || index}>
                                 <TimelineContent sx={{ py: '12px', px: 2 }}>
-                                    <EducationCard education={education}/>
+                                    <EducationCard education={edu}/>
                                 </TimelineContent>
                                 <TimelineSeparator>
                                     <TimelineDot variant="outlined" color="secondary" />
-                                    {index !== experiences.length  && <TimelineConnector style={{ background: '#854CE6' }} />}
+                                    {index !== education.length - 1 && <TimelineConnector style={{ background: '#854CE6' }} />}
                                 </TimelineSeparator>
                             </TimelineItem>
                         ))}
@@ -106,4 +110,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Education

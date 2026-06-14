@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { skills } from '../../data/constants'
+import { useApi } from '../../hooks/useApi'
+import { skills as fallbackSkills } from '../../data/constants'
 
 const Container = styled.div`
 display: flex;
@@ -121,6 +122,9 @@ const SkillImage = styled.img`
 
 
 const Skills = () => {
+  const { data, loading } = useApi('/skills', fallbackSkills);
+  const skills = data || fallbackSkills;
+
   return (
     <Container id="skills">
       <Wrapper>
@@ -128,7 +132,7 @@ const Skills = () => {
         <Desc>Here are some of my skills on which I have been working on for the past 2 years.
         </Desc>
         <SkillsContainer>
-          {skills.map((skill) => (
+          {!loading && skills.map((skill) => (
             <Skill>
               <SkillTitle>{skill.title}</SkillTitle>
               <SkillList>
