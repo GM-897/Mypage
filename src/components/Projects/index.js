@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
-import { Container, Wrapper, Title, Desc, CardContainer, ToggleButtonGroup, ToggleButton, Divider } from './ProjectsStyle'
+import { Container, Wrapper, Title, Desc, CardContainer } from './ProjectsStyle'
 import ProjectCard from '../Cards/ProjectCards'
 import { projects as fallbackProjects } from '../../data/constants'
 import { useApi } from '../../hooks/useApi'
 
 
 const Projects = ({openModal,setOpenModal}) => {
-  const [toggle, setToggle] = useState('all');
+  const [toggle] = useState('all');
   const { data, loading } = useApi('/projects', fallbackProjects);
   const projects = data || fallbackProjects;
 
