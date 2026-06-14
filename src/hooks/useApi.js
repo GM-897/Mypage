@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5001/api');
 
 export function useApi(endpoint, fallback = null) {
   const [data, setData] = useState(fallback);

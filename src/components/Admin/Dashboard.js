@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { apiPost, apiPut, apiDelete } from '../../hooks/useApi';
 import ImageUpload from './ImageUpload';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || (process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:5001/api');
 
 // ── Layout ────────────────────────────────────────────────────────────────────
 
@@ -670,6 +670,11 @@ const BioTab = ({ token }) => {
         <FormRow>
           <Field><FieldLabel>Instagram URL</FieldLabel><Input value={form.insta || ''} onChange={(e) => setF('insta', e.target.value)} /></Field>
           <Field><FieldLabel>Facebook URL</FieldLabel><Input value={form.facebook || ''} onChange={(e) => setF('facebook', e.target.value)} /></Field>
+        </FormRow>
+        <FormRow>
+          <Field full>
+            <ImageUpload label="Profile / Hero Image" value={form.profileImage || ''} onChange={(url) => setF('profileImage', url)} />
+          </Field>
         </FormRow>
         <FormBtns>
           <SaveBtn onClick={save}>Save Bio</SaveBtn>
