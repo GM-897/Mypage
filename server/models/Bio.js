@@ -11,6 +11,7 @@ const BioSchema = new mongoose.Schema({
   insta: { type: String },
   facebook: { type: String },
   profileImage: { type: String },
+  hiddenSections: [{ type: String }],
 }, { timestamps: true });
 
 module.exports = mongoose.model('Bio', BioSchema);

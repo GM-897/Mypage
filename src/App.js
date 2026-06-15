@@ -1,6 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { useState } from "react";
 import { darkTheme, lightTheme } from './utils/Themes.js'
+import { useApi } from './hooks/useApi';
 import Navbar from "./components/Navbar";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -32,7 +33,9 @@ const Wrapper = styled.div`
 function App() {
   const [darkMode] = useState(true);
   const [openModal, setOpenModal] = useState({ state: false, project: null });
-  console.log(openModal)
+  const { data: bio } = useApi('/bio', {});
+  const hidden = bio?.hiddenSections || [];
+
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Router>
@@ -48,16 +51,18 @@ function App() {
               <Navbar />
               <Body>
                 <HeroSection />
-                <Wrapper>
-                  <Skills />
-                  <Experience />
-                </Wrapper>
+                {(!hidden.includes('skills') || !hidden.includes('experience')) && (
+                  <Wrapper>
+                    {!hidden.includes('skills') && <Skills />}
+                    {!hidden.includes('experience') && <Experience />}
+                  </Wrapper>
+                )}
                 <Wrapper>
                   <CodingProfiles />
                 </Wrapper>
-                <Projects openModal={openModal} setOpenModal={setOpenModal} />
+                {!hidden.includes('projects') && <Projects openModal={openModal} setOpenModal={setOpenModal} />}
                 <Wrapper>
-                  <Education />
+                  {!hidden.includes('education') && <Education />}
                   <Contact />
                 </Wrapper>
                 <Footer />

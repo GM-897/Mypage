@@ -676,6 +676,31 @@ const BioTab = ({ token }) => {
             <ImageUpload label="Profile / Hero Image" value={form.profileImage || ''} onChange={(url) => setF('profileImage', url)} />
           </Field>
         </FormRow>
+        <FormRow>
+          <Field full>
+            <FieldLabel style={{ marginBottom: 12 }}>Visible Sections</FieldLabel>
+            <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+              {['Skills', 'Experience', 'Projects', 'Education'].map((section) => {
+                const key = section.toLowerCase();
+                const isHidden = (form.hiddenSections || []).includes(key);
+                return (
+                  <label key={key} style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', userSelect: 'none' }}>
+                    <input
+                      type="checkbox"
+                      checked={!isHidden}
+                      onChange={(e) => {
+                        const cur = form.hiddenSections || [];
+                        setF('hiddenSections', e.target.checked ? cur.filter((s) => s !== key) : [...cur, key]);
+                      }}
+                      style={{ width: 16, height: 16, accentColor: '#854CE6', cursor: 'pointer' }}
+                    />
+                    <span style={{ color: '#F2F3F4', fontSize: 14 }}>{section}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </Field>
+        </FormRow>
         <FormBtns>
           <SaveBtn onClick={save}>Save Bio</SaveBtn>
         </FormBtns>

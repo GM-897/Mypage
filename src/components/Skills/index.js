@@ -129,16 +129,15 @@ const Skills = () => {
     <Container id="skills">
       <Wrapper>
         <Title>Skills</Title>
-        <Desc>Here are some of my skills on which I have been working on for the past 2 years.
-        </Desc>
+        <Desc>Here are some of my prominent skills.</Desc>
         <SkillsContainer>
           {!loading && skills.map((skill) => (
             <Skill>
               <SkillTitle>{skill.title}</SkillTitle>
               <SkillList>
                 {skill.skills.map((item) => (
-                  <SkillItem>
-                    <SkillImage src={item.image}/>
+                  <SkillItem key={item.name}>
+                    {item.image && <SkillImage src={item.image} alt={item.name} onError={(e) => { e.target.style.display = 'none'; }} />}
                     {item.name}
                   </SkillItem>
                 ))}
