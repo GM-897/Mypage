@@ -37,8 +37,9 @@ export async function apiPost(endpoint, body, token) {
     body: JSON.stringify(body),
   });
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.message || 'Request failed');
+    let message = `HTTP ${res.status}`;
+    try { const err = await res.json(); message = err.message || message; } catch {}
+    throw new Error(message);
   }
   return res.json();
 }
@@ -53,8 +54,9 @@ export async function apiPut(endpoint, body, token) {
     body: JSON.stringify(body),
   });
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.message || 'Request failed');
+    let message = `HTTP ${res.status}`;
+    try { const err = await res.json(); message = err.message || message; } catch {}
+    throw new Error(message);
   }
   return res.json();
 }
@@ -67,8 +69,9 @@ export async function apiDelete(endpoint, token) {
     },
   });
   if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.message || 'Request failed');
+    let message = `HTTP ${res.status}`;
+    try { const err = await res.json(); message = err.message || message; } catch {}
+    throw new Error(message);
   }
   return res.json();
 }
