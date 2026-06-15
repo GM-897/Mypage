@@ -6,10 +6,14 @@ import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 import { Bio } from '../../data/constants';
 import { useTheme } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useApi } from '../../hooks/useApi';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const theme = useTheme()
+  const theme = useTheme();
+  const { data: bio } = useApi('/bio', {});
+  const hidden = bio?.hiddenSections || [];
+
   return (
     <Nav>
       <NavbarContainer>
@@ -19,16 +23,14 @@ const Navbar = () => {
           </div>
         </NavLogo>
         <MobileIcon>
-          <FaBars onClick={() => {
-            setIsOpen(!isOpen)
-          }} />
+          <FaBars onClick={() => setIsOpen(!isOpen)} />
         </MobileIcon>
         <NavItems>
           <NavLink href="#about">About</NavLink>
-          <NavLink href='#skills'>Skills</NavLink>
-          <NavLink href='#experience'>Experience</NavLink>
-          <NavLink href='#projects'>Projects</NavLink>
-          <NavLink href='#education'>Education</NavLink>
+          {!hidden.includes('skills') && <NavLink href='#skills'>Skills</NavLink>}
+          {!hidden.includes('experience') && <NavLink href='#experience'>Experience</NavLink>}
+          {!hidden.includes('projects') && <NavLink href='#projects'>Projects</NavLink>}
+          {!hidden.includes('education') && <NavLink href='#education'>Education</NavLink>}
         </NavItems>
         <ButtonContainer>
           <GitHubButton href={Bio.github} target="_blank">Github Profile</GitHubButton>
@@ -40,31 +42,20 @@ const Navbar = () => {
           </Link>
         </ButtonContainer>
 
-        {
-          isOpen &&
+        {isOpen && (
           <MobileMenu isOpen={isOpen}>
-            <MobileLink href="#about" onClick={() => {
-              setIsOpen(!isOpen)
-            }}>About</MobileLink>
-            <MobileLink href='#skills' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Skills</MobileLink>
-            <MobileLink href='#experience' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Experience</MobileLink>
-            <MobileLink href='#projects' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Projects</MobileLink>
-            <MobileLink href='#education' onClick={() => {
-              setIsOpen(!isOpen)
-            }}>Education</MobileLink>
+            <MobileLink href="#about" onClick={() => setIsOpen(false)}>About</MobileLink>
+            {!hidden.includes('skills') && <MobileLink href='#skills' onClick={() => setIsOpen(false)}>Skills</MobileLink>}
+            {!hidden.includes('experience') && <MobileLink href='#experience' onClick={() => setIsOpen(false)}>Experience</MobileLink>}
+            {!hidden.includes('projects') && <MobileLink href='#projects' onClick={() => setIsOpen(false)}>Projects</MobileLink>}
+            {!hidden.includes('education') && <MobileLink href='#education' onClick={() => setIsOpen(false)}>Education</MobileLink>}
             <GitHubButton style={{padding: '10px 16px',background: `${theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github</GitHubButton>
             <GitHubButton style={{padding: '10px 16px',background: `${theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.linkedin} target="_blank">LinkedIn</GitHubButton>
             <Link to="/admin" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 6, color: theme.text_secondary, textDecoration: 'none', fontSize: 14 }}>
               <MdOutlineAdminPanelSettings size="1.2rem" /> Admin Panel
             </Link>
           </MobileMenu>
-        }
+        )}
       </NavbarContainer>
     </Nav>
   )
