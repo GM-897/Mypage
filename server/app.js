@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 
 const publicRoutes = require('./routes/public');
 const adminRoutes = require('./routes/admin');
+const statsRoutes = require('./routes/stats');
 
 const app = express();
 
@@ -38,6 +39,9 @@ app.use((req, res, next) => {
 
 // Health check responds immediately — no DB needed
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
+
+// Stats routes hit external APIs only — no DB needed
+app.use('/api', statsRoutes);
 
 // All other routes go through DB connection
 app.use((req, res, next) => {
