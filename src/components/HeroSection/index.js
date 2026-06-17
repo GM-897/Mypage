@@ -7,12 +7,14 @@ import { Bio } from '../../data/constants';
 import { useApi } from '../../hooks/useApi';
 
 const HeroSection = () => {
-    const { data: apiBio } = useApi('/bio', null);
+    const { data: apiBio, loading: bioLoading } = useApi('/bio', null);
     const name = apiBio?.name || Bio.name;
     const roles = apiBio?.roles?.length ? apiBio.roles : Bio.roles;
     const description = apiBio?.description || Bio.description;
     const resume = apiBio?.resume || Bio.resume;
-    const profileImage = apiBio?.profileImage || HeroImg;
+    // Don't fall back to local HeroImg until API has responded — prevents
+    // the visible swap from old bundled image → newly uploaded Cloudinary URL.
+    const profileImage = bioLoading ? null : (apiBio?.profileImage || HeroImg);
 
     return (
         <div id="about">
@@ -40,7 +42,7 @@ const HeroSection = () => {
                     </HeroLeftContainer>
 
                     <HeroRightContainer id="Right">
-                        <Img src={profileImage} alt="hero-image" />
+                        {profileImage && <Img src={profileImage} alt="hero-image" />}
                     </HeroRightContainer>
                 </HeroInnerContainer>
 

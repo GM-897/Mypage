@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { apiPost, apiPut, apiDelete } from '../../hooks/useApi';
 import ImageUpload from './ImageUpload';
@@ -827,7 +827,14 @@ const AdminDashboard = () => {
     <Page>
       <Header>
         <HeaderTitle>Portfolio Admin</HeaderTitle>
-        <LogoutBtn onClick={logout}>Logout</LogoutBtn>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Link to="/" style={{ color: '#b1b2b3', textDecoration: 'none', fontSize: 14, display: 'flex', alignItems: 'center', gap: 5, border: '1px solid #444', borderRadius: 8, padding: '7px 14px', transition: 'all 0.2s' }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = '#854CE6'; e.currentTarget.style.color = '#854CE6'; }}
+            onMouseLeave={e => { e.currentTarget.style.borderColor = '#444'; e.currentTarget.style.color = '#b1b2b3'; }}>
+            ← Website
+          </Link>
+          <LogoutBtn onClick={logout}>Logout</LogoutBtn>
+        </div>
       </Header>
       <Body>
         <Sidebar>
