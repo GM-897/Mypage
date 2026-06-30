@@ -680,7 +680,7 @@ const BioTab = ({ token }) => {
           <Field full>
             <FieldLabel style={{ marginBottom: 12 }}>Visible Sections</FieldLabel>
             <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-              {['Skills', 'Experience', 'Projects', 'Education'].map((section) => {
+              {['Skills', 'Experience', 'Achievements', 'Projects', 'Education'].map((section) => {
                 const key = section.toLowerCase();
                 const isHidden = (form.hiddenSections || []).includes(key);
                 return (
@@ -809,9 +809,116 @@ const SkillsTab = ({ token }) => {
   );
 };
 
+// ── Achievements Tab ──────────────────────────────────────────────────────────
+
+const EMPTY_ACH = { title: '', image: '', link: '', description: '', date: '', order: 0 };
+
+const AchievementsTab = ({ token }) => {
+  const [items, setItems] = useState([]);
+  const [form, setForm] = useState(null);
+  const [editId, setEditId] = useState(null);
+  const [status, setStatus] = useState('');
+  const [statusError, setStatusError] = useState(false);
+
+  const load = useCallback(async () => {
+    const res = await fetch(`${API_URL}/achievements`);
+    setItems(await res.json());
+  }, []);
+
+  useEffect(() => { load(); }, [load]);
+
+  const setF = (key, val) => setForm((f) => ({ ...f, [key]: val }));
+
+  const save = async () => {
+    try {
+      if (editId) {
+        await apiPut(`/admin/achievements/${editId}`, form, token);
+        setStatus('Updated!');
+      } else {
+        await apiPost('/admin/achievements', form, token);
+        setStatus('Added!');
+      }
+      setStatusError(false);
+      setForm(null);
+      setEditId(null);
+      load();
+    } catch (err) {
+      setStatus(err.message);
+      setStatusError(true);
+    }
+  };
+
+  const del = async (id) => {
+    if (!window.confirm('Delete this achievement?')) return;
+    await apiDelete(`/admin/achievements/${id}`, token);
+    load();
+  };
+
+  return (
+    <div>
+      <SectionTitle>Achievements</SectionTitle>
+      <AddBtn onClick={() => { setForm({ ...EMPTY_ACH }); setEditId(null); }}>+ Add Achievement</AddBtn>
+
+      {form && (
+        <FormBox>
+          <FormTitle>{editId ? 'Edit Achievement' : 'New Achievement'}</FormTitle>
+          <FormRow>
+            <Field full><FieldLabel>Title *</FieldLabel><Input value={form.title} onChange={(e) => setF('title', e.target.value)} placeholder="e.g. AWS Certified Developer" /></Field>
+          </FormRow>
+          <FormRow>
+            <Field full>
+              <FieldLabel>Description</FieldLabel>
+              <Textarea value={form.description} onChange={(e) => setF('description', e.target.value)} placeholder="Brief description of the achievement" />
+            </Field>
+          </FormRow>
+          <FormRow>
+            <Field><FieldLabel>Date (e.g. Jan 2024)</FieldLabel><Input value={form.date} onChange={(e) => setF('date', e.target.value)} placeholder="Jan 2024" /></Field>
+            <Field><FieldLabel>Order</FieldLabel><Input type="number" value={form.order} onChange={(e) => setF('order', Number(e.target.value))} /></Field>
+          </FormRow>
+          <FormRow>
+            <Field full>
+              <FieldLabel>Certificate / Award URL (opens when card is clicked)</FieldLabel>
+              <Input value={form.link} onChange={(e) => setF('link', e.target.value)} placeholder="https://www.credly.com/badges/..." />
+            </Field>
+          </FormRow>
+          <FormRow>
+            <Field full>
+              <ImageUpload label="Certificate / Award Image" value={form.image} onChange={(url) => setF('image', url)} />
+            </Field>
+          </FormRow>
+          <FormBtns>
+            <SaveBtn onClick={save}>Save</SaveBtn>
+            <CancelBtn onClick={() => { setForm(null); setEditId(null); setStatus(''); }}>Cancel</CancelBtn>
+          </FormBtns>
+          {status && <StatusMsg error={statusError}>{status}</StatusMsg>}
+        </FormBox>
+      )}
+
+      {items.map((item) => (
+        <Card key={item._id}>
+          {item.image && (
+            <img src={item.image} alt={item.title} style={{ height: 56, width: 80, objectFit: 'cover', borderRadius: 8, flexShrink: 0 }} />
+          )}
+          <CardInfo>
+            <CardTitle>{item.title}</CardTitle>
+            <CardSub>
+              {[item.date, item.description].filter(Boolean).join(' · ')}
+              {item.link && <span style={{ color: '#854CE6', marginLeft: 6 }}>↗ link</span>}
+            </CardSub>
+          </CardInfo>
+          <CardActions>
+            <EditBtn onClick={() => { setEditId(item._id); setForm({ ...item }); }}>Edit</EditBtn>
+            <DeleteBtn onClick={() => del(item._id)}>Delete</DeleteBtn>
+          </CardActions>
+        </Card>
+      ))}
+    </div>
+  );
+};
+
 // ── Dashboard Root ────────────────────────────────────────────────────────────
 
-const TABS = ['Experience', 'Projects', 'Education', 'Skills', 'Bio'];
+const TABS = ['Experience', 'Projects', 'Education', 'Skills', 'Achievements', 'Bio'];
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('Experience');
@@ -845,11 +952,12 @@ const AdminDashboard = () => {
           ))}
         </Sidebar>
         <Main>
-          {activeTab === 'Experience' && <ExperienceTab token={token} />}
-          {activeTab === 'Projects' && <ProjectsTab token={token} />}
-          {activeTab === 'Education' && <EducationTab token={token} />}
-          {activeTab === 'Skills' && <SkillsTab token={token} />}
-          {activeTab === 'Bio' && <BioTab token={token} />}
+          {activeTab === 'Experience'   && <ExperienceTab   token={token} />}
+          {activeTab === 'Projects'    && <ProjectsTab    token={token} />}
+          {activeTab === 'Education'   && <EducationTab   token={token} />}
+          {activeTab === 'Skills'      && <SkillsTab      token={token} />}
+          {activeTab === 'Achievements'&& <AchievementsTab token={token} />}
+          {activeTab === 'Bio'         && <BioTab         token={token} />}
         </Main>
       </Body>
     </Page>

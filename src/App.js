@@ -15,6 +15,7 @@ import Education from "./components/Education";
 import ProjectDetails from "./components/ProjectDetails";
 import styled from "styled-components";
 import CodingProfiles from "./components/CodingProfiles/index.js";
+import Achievements from "./components/Achievements";
 import AdminLogin from "./components/Admin/Login";
 import AdminDashboard from "./components/Admin/Dashboard";
 import ProtectedRoute from "./components/Admin/ProtectedRoute";
@@ -55,6 +56,11 @@ function App() {
                   <Wrapper>
                     {!hidden.includes('skills') && <Skills />}
                     {!hidden.includes('experience') && <Experience />}
+                  </Wrapper>
+                )}
+                {!hidden.includes('achievements') && (
+                  <Wrapper>
+                    <Achievements />
                   </Wrapper>
                 )}
                 <Wrapper>

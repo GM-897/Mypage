@@ -10,6 +10,7 @@ const Experience = require('../models/Experience');
 const Project = require('../models/Project');
 const Skill = require('../models/Skill');
 const Education = require('../models/Education');
+const Achievement = require('../models/Achievement');
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
 
@@ -165,6 +166,37 @@ router.put('/education/:id', auth, async (req, res) => {
 router.delete('/education/:id', auth, async (req, res) => {
   try {
     await Education.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// ── Achievements ──────────────────────────────────────────────────────────────
+
+router.post('/achievements', auth, async (req, res) => {
+  try {
+    const achievement = new Achievement(req.body);
+    await achievement.save();
+    res.status(201).json(achievement);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.put('/achievements/:id', auth, async (req, res) => {
+  try {
+    const achievement = await Achievement.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!achievement) return res.status(404).json({ message: 'Not found' });
+    res.json(achievement);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.delete('/achievements/:id', auth, async (req, res) => {
+  try {
+    await Achievement.findByIdAndDelete(req.params.id);
     res.json({ message: 'Deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });

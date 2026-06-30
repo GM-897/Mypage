@@ -12,7 +12,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const theme = useTheme();
   const { data: bio } = useApi('/bio', {});
+  const { data: sectionStatus } = useApi('/section-status', null);
   const hidden = bio?.hiddenSections || [];
+
+  // Returns true only if the section is not manually hidden AND has at least one item.
+  // While sectionStatus is still loading (null), defaults to true so links don't flicker away.
+  const show = (key) => !hidden.includes(key) && (sectionStatus === null || sectionStatus[key] === true);
 
   return (
     <Nav>
@@ -27,13 +32,14 @@ const Navbar = () => {
         </MobileIcon>
         <NavItems>
           <NavLink href="#about">About</NavLink>
-          {!hidden.includes('skills') && <NavLink href='#skills'>Skills</NavLink>}
-          {!hidden.includes('experience') && <NavLink href='#experience'>Experience</NavLink>}
-          {!hidden.includes('projects') && <NavLink href='#projects'>Projects</NavLink>}
-          {!hidden.includes('education') && <NavLink href='#education'>Education</NavLink>}
+          {show('skills')       && <NavLink href='#skills'>Skills</NavLink>}
+          {show('experience')   && <NavLink href='#experience'>Experience</NavLink>}
+          {show('achievements') && <NavLink href='#achievements'>Achievements</NavLink>}
+          {show('projects')     && <NavLink href='#projects'>Projects</NavLink>}
+          {show('education')    && <NavLink href='#education'>Education</NavLink>}
         </NavItems>
         <ButtonContainer>
-          <GitHubButton href={Bio.github} target="_blank">Github Profile</GitHubButton>
+          <GitHubButton href={Bio.github} target="_blank">Github</GitHubButton>
           <GitHubButton href={Bio.linkedin} target="_blank">LinkedIn</GitHubButton>
           <Link to="/admin" style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 8, color: theme.text_secondary, textDecoration: 'none', fontSize: 14, opacity: 0.7, transition: 'opacity 0.2s' }}
             onMouseEnter={e => e.currentTarget.style.opacity = 1}
@@ -45,10 +51,11 @@ const Navbar = () => {
         {isOpen && (
           <MobileMenu isOpen={isOpen}>
             <MobileLink href="#about" onClick={() => setIsOpen(false)}>About</MobileLink>
-            {!hidden.includes('skills') && <MobileLink href='#skills' onClick={() => setIsOpen(false)}>Skills</MobileLink>}
-            {!hidden.includes('experience') && <MobileLink href='#experience' onClick={() => setIsOpen(false)}>Experience</MobileLink>}
-            {!hidden.includes('projects') && <MobileLink href='#projects' onClick={() => setIsOpen(false)}>Projects</MobileLink>}
-            {!hidden.includes('education') && <MobileLink href='#education' onClick={() => setIsOpen(false)}>Education</MobileLink>}
+            {show('skills')       && <MobileLink href='#skills'       onClick={() => setIsOpen(false)}>Skills</MobileLink>}
+            {show('experience')   && <MobileLink href='#experience'   onClick={() => setIsOpen(false)}>Experience</MobileLink>}
+            {show('achievements') && <MobileLink href='#achievements' onClick={() => setIsOpen(false)}>Achievements</MobileLink>}
+            {show('projects')     && <MobileLink href='#projects'     onClick={() => setIsOpen(false)}>Projects</MobileLink>}
+            {show('education')    && <MobileLink href='#education'    onClick={() => setIsOpen(false)}>Education</MobileLink>}
             <GitHubButton style={{padding: '10px 16px',background: `${theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.github} target="_blank">Github</GitHubButton>
             <GitHubButton style={{padding: '10px 16px',background: `${theme.primary}`, color: 'white',width: 'max-content'}} href={Bio.linkedin} target="_blank">LinkedIn</GitHubButton>
             <Link to="/admin" onClick={() => setIsOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: 6, color: theme.text_secondary, textDecoration: 'none', fontSize: 14 }}>
