@@ -147,14 +147,6 @@ const ViewLabel = styled.span`
   letter-spacing: 0.3px;
 `;
 
-const EmptyState = styled.div`
-  color: ${({ theme }) => theme.text_secondary};
-  font-size: 14px;
-  text-align: center;
-  padding: 40px;
-  opacity: 0.6;
-`;
-
 // ─── Single Card ───────────────────────────────────────────────────
 const AchievementCard = ({ item }) => {
   const accent = `${item._accentHex || '#854CE6'}`;
